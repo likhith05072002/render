@@ -28,7 +28,7 @@ FIXED_PROMPT = ROOT / "system-prompt-fixed.md"
 # Add root to sys.path so pipeline package is importable
 sys.path.insert(0, str(ROOT))
 
-app = Flask(__name__, static_folder=str(UI_DIST_DIR), static_url_path="")
+app = Flask(__name__)
 CORS(app)
 
 
