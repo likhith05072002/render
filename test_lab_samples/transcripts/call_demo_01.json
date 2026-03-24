@@ -1,0 +1,78 @@
+{
+  "call_id": "call_demo_01",
+  "customer": {
+    "name": "Asha Menon",
+    "pending_amount": "50000",
+    "closure_amount": "35000",
+    "settlement_amount": "35000",
+    "dpd": 124
+  },
+  "disposition": "CALLBACK",
+  "phases_visited": [
+    "opening",
+    "discovery",
+    "closing"
+  ],
+  "total_turns": 8,
+  "analysis": {
+    "bot_flags": {
+      "is_confused": false,
+      "is_repeating": false
+    },
+    "customer_flags": {
+      "is_agitated": false
+    }
+  },
+  "function_calls": [
+    {
+      "turn": 6,
+      "function": "schedule_callback",
+      "params": {
+        "reason": "customer_busy",
+        "preferred_time": "tomorrow evening",
+        "callback_type": "follow_up"
+      }
+    },
+    {
+      "turn": 8,
+      "function": "end_call",
+      "params": {
+        "reason": "resolved_callback_scheduled"
+      }
+    }
+  ],
+  "transcript": [
+    {
+      "speaker": "agent",
+      "text": "Hello, this is Alex calling on behalf of DemoLender. Am I speaking with Asha Menon?"
+    },
+    {
+      "speaker": "customer",
+      "text": "Yes, speaking."
+    },
+    {
+      "speaker": "agent",
+      "text": "You currently have fifty thousand rupees outstanding, and we can close the loan at thirty five thousand rupees. Is this a good time to talk?"
+    },
+    {
+      "speaker": "customer",
+      "text": "I am at work right now."
+    },
+    {
+      "speaker": "agent",
+      "text": "Understood. Before I let you go, is there a better time for a quick callback?"
+    },
+    {
+      "speaker": "customer",
+      "text": "Tomorrow evening is fine."
+    },
+    {
+      "speaker": "agent",
+      "text": "Thank you. I have scheduled a callback for tomorrow evening."
+    },
+    {
+      "speaker": "customer",
+      "text": "Okay."
+    }
+  ]
+}

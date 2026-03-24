@@ -1,0 +1,173 @@
+{
+  "call_id": "call_03",
+  "customer_name": "Anjali Reddy",
+  "expected_fixes": [
+    "FIX 2",
+    "FIX 4"
+  ],
+  "before": {
+    "score": 42,
+    "rule_score": 17,
+    "llm_score": 25,
+    "verdict": "bad",
+    "disposition": "ALREADY_PAID",
+    "phases": [
+      "opening",
+      "discovery",
+      "dispute"
+    ]
+  },
+  "after": {
+    "score": 61,
+    "rule_score": 29,
+    "llm_score": 32,
+    "verdict": "bad",
+    "disposition": "NO_COMMITMENT",
+    "phases": [
+      "opening"
+    ],
+    "tier_a_breakdown": {
+      "phase_progression": 5,
+      "end_call_present": 10,
+      "no_repetition": 10,
+      "disposition_quality": 4,
+      "short_call_penalty": 0
+    },
+    "llm_breakdown": {
+      "language_handling": 10,
+      "protocol_adherence": 15,
+      "discovery_quality": 3,
+      "empathy_tone": 4
+    },
+    "reasoning": "The agent switched to Tamil after a 1-2 turn delay, which is why it received a score of 10 for language handling. All required functions were called appropriately, including the end_call function, resulting in a perfect score for protocol adherence. However, the discovery quality was minimal as the agent rushed through the conversation without fully understanding the customer's situation. The tone showed some empathy but had notable gaps, particularly in acknowledging the customer's difficulties."
+  },
+  "fix_impact": [
+    {
+      "fix": "FIX 2",
+      "definition": "Already-paid protocol — ask UTR once, acknowledge, immediately end_call",
+      "effect": "end_call('claims_already_paid') NOT called — FIX 2 did not fully apply",
+      "applied": false
+    }
+  ],
+  "improvements": [],
+  "failure_reason": "FIX 2 did not fully apply: claims_already_paid end_call not triggered.",
+  "simulated_fn_calls": [
+    {
+      "turn": 2,
+      "function": "switch_language",
+      "params": {
+        "language": "ta"
+      }
+    },
+    {
+      "turn": 6,
+      "function": "switch_language",
+      "params": {
+        "language": "ta"
+      }
+    },
+    {
+      "turn": 16,
+      "function": "end_call",
+      "params": {
+        "reason": "borrower_refused_conversation"
+      }
+    }
+  ],
+  "simulated_transcript": [
+    {
+      "turn": 1,
+      "speaker": "customer",
+      "text": "நீங்கள் அழைக்கும்"
+    },
+    {
+      "turn": 2,
+      "speaker": "agent",
+      "text": "",
+      "function_calls": [
+        "switch_language"
+      ]
+    },
+    {
+      "turn": 3,
+      "speaker": "customer",
+      "text": "ஹலோ"
+    },
+    {
+      "turn": 4,
+      "speaker": "agent",
+      "text": "வணக்கம், அஞ்சலி ரெட்டி. நான் அழைக்கிறேன், உங்கள் டெமோலெண்டர் கடனுக்கான விவரங்களைப் பற்றி பேச. இது உங்களுக்கு நல்ல நேரமா?",
+      "function_calls": null
+    },
+    {
+      "turn": 5,
+      "speaker": "customer",
+      "text": "ஹலோ தமிழே சொல்லுங்க"
+    },
+    {
+      "turn": 6,
+      "speaker": "agent",
+      "text": "",
+      "function_calls": [
+        "switch_language"
+      ]
+    },
+    {
+      "turn": 7,
+      "speaker": "customer",
+      "text": "ஆமா சார்"
+    },
+    {
+      "turn": 8,
+      "speaker": "agent",
+      "text": "நாங்கள் முந்தைய முறையில் உங்கள் கடனை மூடுவதற்கான மூன்று பத்து ஆயிரம் ரூபாய்க்கு பேசினோம். நீங்கள் இதற்கான நடவடிக்கை எடுக்க தயாரா?",
+      "function_calls": null
+    },
+    {
+      "turn": 9,
+      "speaker": "customer",
+      "text": "ஆ ஆ சார் ஈ"
+    },
+    {
+      "turn": 10,
+      "speaker": "agent",
+      "text": "மிகவும் பெரிய தொகை. அதனால், நாங்கள் கூடுதல் கட்டணங்களை நீக்கி மூடுவதற்கான மூன்று பத்து ஆயிரம் ரூபாய்க்கு இந்த வாய்ப்பு வழங்குகிறோம். நீங்கள் இதற்கான நடவடிக்கை எடுக்க விரும்புகிறீர்களா?",
+      "function_calls": null
+    },
+    {
+      "turn": 11,
+      "speaker": "customer",
+      "text": "ஆகாகத்"
+    },
+    {
+      "turn": 12,
+      "speaker": "agent",
+      "text": "நீங்கள் மூன்று பத்து ஆயிரம் ரூபாயை எப்போது செலுத்த முடியும்? இது உங்கள் கடனை மூடுவதற்கான சிறந்த வாய்ப்பு.",
+      "function_calls": null
+    },
+    {
+      "turn": 13,
+      "speaker": "customer",
+      "text": "இத்தன இருவத்தரா ஆகஸ்ட் ஆகஸ்ட் டுவெண்டி ஃபைவ்மே ருவாயிரலாம் கிடையாது சார்"
+    },
+    {
+      "turn": 14,
+      "speaker": "agent",
+      "text": "நான் புரிந்துகொள்கிறேன். ஆனால், நீங்கள் இப்போது நடவடிக்கை எடுக்கவில்லை என்றால், தொகை மேலும் அதிகரிக்க வாய்ப்பு உள்ளது. நீங்கள் இப்போது எவ்வளவு தொகை செலுத்த முடியும்?",
+      "function_calls": null
+    },
+    {
+      "turn": 15,
+      "speaker": "customer",
+      "text": "ஆகா கம்பெனிலது ஆகா"
+    },
+    {
+      "turn": 16,
+      "speaker": "agent",
+      "text": "",
+      "function_calls": [
+        "end_call"
+      ]
+    }
+  ]
+}

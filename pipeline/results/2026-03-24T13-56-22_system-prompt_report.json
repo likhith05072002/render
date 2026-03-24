@@ -1,0 +1,435 @@
+{
+  "meta": {
+    "prompt_file": "system-prompt.md",
+    "transcripts_dir": "transcripts",
+    "timestamp": "2026-03-24T13:56:22.134897",
+    "total_calls": 10,
+    "max_turns_per_call": 15,
+    "model": "gpt-4o-mini",
+    "temperature": 0,
+    "total_tokens_input": 566712,
+    "total_tokens_output": 8670,
+    "total_cost_usd": 0.09021,
+    "scoring": "Tier A (50pts rule-based) + Tier B (50pts LLM-judged, dynamic prompt adherence)"
+  },
+  "aggregate": {
+    "mean_score": 35,
+    "median_score": 25.0,
+    "min_score": 15,
+    "max_score": 71,
+    "good_count": 2,
+    "bad_count": 8,
+    "good_pct": 20.0,
+    "dim_averages": {
+      "language_handling": 2.5,
+      "protocol_adherence": 3.5,
+      "discovery_quality": 3.6,
+      "empathy_tone": 4.1
+    },
+    "weakest_dimension": "language_handling",
+    "strongest_dimension": "empathy_tone"
+  },
+  "results": [
+    {
+      "call_id": "call_01",
+      "customer_name": "Priya Sharma",
+      "disposition": "BLANK_CALL",
+      "original_disposition": "PTP",
+      "score": 25,
+      "rule_score": 15,
+      "llm_score": 10,
+      "verdict": "bad",
+      "confidence": 0.2,
+      "score_breakdown": {
+        "phase_progression": 5,
+        "end_call_present": 0,
+        "no_repetition": 10,
+        "disposition_quality": 0,
+        "short_call_penalty": 0,
+        "language_handling": 0,
+        "protocol_adherence": 0,
+        "discovery_quality": 6,
+        "empathy_tone": 4
+      },
+      "worst_messages": [
+        {
+          "turn": 2,
+          "speaker": "agent",
+          "text": "Your total outstanding is fifty thousand rupees. But we can remove all charges and close your loan at just thirty five thousand rupees. Can you share why you haven't been able to make the payment?",
+          "issue_type": "prompt_violation",
+          "reason": "The agent disclosed the total outstanding amount and the closure amount without verifying the borrower's identity, violating the amount hierarchy."
+        },
+        {
+          "turn": 12,
+          "speaker": "agent",
+          "text": "I understand. It seems there might be a connection issue. Would you like to schedule a callback for a better time?",
+          "issue_type": "missed_resolution",
+          "reason": "The agent should have ended the call or scheduled a callback instead of continuing to ask for payment details despite the connection issue."
+        }
+      ],
+      "reasoning": "The agent failed to adhere to protocol by disclosing sensitive amounts without confirming the borrower's identity, which is a significant violation. Additionally, the conversation lacked effective discovery as the agent repeatedly asked about challenges without addressing the connection issues adequately. The tone was somewhat empathetic, but the agent's responses were often repetitive and did not adapt well to the customer's situation.",
+      "phases": [
+        "opening"
+      ]
+    },
+    {
+      "call_id": "call_02",
+      "customer_name": "Rahul Verma",
+      "disposition": "BLANK_CALL",
+      "original_disposition": "BLANK_CALL",
+      "score": 53,
+      "rule_score": 20,
+      "llm_score": 33,
+      "verdict": "bad",
+      "confidence": 0.8,
+      "score_breakdown": {
+        "phase_progression": 10,
+        "end_call_present": 0,
+        "no_repetition": 10,
+        "disposition_quality": 0,
+        "short_call_penalty": 0,
+        "language_handling": 10,
+        "protocol_adherence": 10,
+        "discovery_quality": 6,
+        "empathy_tone": 7
+      },
+      "worst_messages": [
+        {
+          "turn": 2,
+          "speaker": "agent",
+          "text": "Your total outstanding is fifty thousand rupees. But we can remove all charges and close your loan at just fifty thousand rupees. Can you share why you haven't been able to make the payment?",
+          "issue_type": "prompt_violation",
+          "reason": "The agent repeated the same amount twice and did not follow the instruction to keep responses short and avoid repetition."
+        },
+        {
+          "turn": 4,
+          "speaker": "agent",
+          "text": "Your total outstanding is fifty thousand rupees. You can close your loan at just fifty thousand rupees, which removes all charges. What has been holding you back from making this payment?",
+          "issue_type": "repetition",
+          "reason": "The agent repeated the same information about the total outstanding and closure amount, violating the instruction to never repeat the same phrase twice."
+        }
+      ],
+      "reasoning": "The agent switched to Hindi after the customer used Hindi, which was timely. However, there were multiple instances of repetition regarding the total outstanding amount, which detracted from the conversation quality. The agent did explore the customer's situation but could have done so more effectively by asking more targeted questions. The tone was mostly empathetic, but there were moments where it felt slightly robotic.",
+      "phases": [
+        "opening",
+        "dispute"
+      ]
+    },
+    {
+      "call_id": "call_03",
+      "customer_name": "Anjali Reddy",
+      "disposition": "BLANK_CALL",
+      "original_disposition": "ALREADY_PAID",
+      "score": 15,
+      "rule_score": 15,
+      "llm_score": 0,
+      "verdict": "bad",
+      "confidence": 0.0,
+      "score_breakdown": {
+        "phase_progression": 5,
+        "end_call_present": 0,
+        "no_repetition": 10,
+        "disposition_quality": 0,
+        "short_call_penalty": 0,
+        "language_handling": 0,
+        "protocol_adherence": 0,
+        "discovery_quality": 0,
+        "empathy_tone": 0
+      },
+      "worst_messages": [],
+      "reasoning": "LLM judge failed.",
+      "phases": [
+        "opening"
+      ]
+    },
+    {
+      "call_id": "call_04",
+      "customer_name": "Vikram Patel",
+      "disposition": "BLANK_CALL",
+      "original_disposition": "CALLBACK",
+      "score": 25,
+      "rule_score": 15,
+      "llm_score": 10,
+      "verdict": "bad",
+      "confidence": 0.2,
+      "score_breakdown": {
+        "phase_progression": 5,
+        "end_call_present": 0,
+        "no_repetition": 10,
+        "disposition_quality": 0,
+        "short_call_penalty": 0,
+        "language_handling": 0,
+        "protocol_adherence": 0,
+        "discovery_quality": 6,
+        "empathy_tone": 4
+      },
+      "worst_messages": [
+        {
+          "turn": 4,
+          "speaker": "agent",
+          "text": "Your total outstanding is fifty thousand rupees. But we can remove all charges and close your loan at just fifty thousand rupees.",
+          "issue_type": "prompt_violation",
+          "reason": "The agent repeated the same amount twice and did not follow the instruction to avoid disclosing the exact amount to the customer."
+        },
+        {
+          "turn": 28,
+          "speaker": "agent",
+          "text": "You can also reach out to support@demolender.com if you have any questions.",
+          "issue_type": "prompt_violation",
+          "reason": "The agent provided a forbidden phrase by suggesting the customer contact support for questions, which is outside the scope of the call."
+        }
+      ],
+      "reasoning": "The agent failed to adhere to the protocol by not calling any functions and repeating the same amount in turn 4. While there was some discovery about the customer's situation, it was not thorough enough to classify the borrower type effectively. The tone was somewhat empathetic, but the use of forbidden phrases and repetition detracted from the overall quality of the call.",
+      "phases": [
+        "opening"
+      ]
+    },
+    {
+      "call_id": "call_05",
+      "customer_name": "Deepa Krishnan",
+      "disposition": "PTP",
+      "original_disposition": "STRONGEST_PTP",
+      "score": 68,
+      "rule_score": 40,
+      "llm_score": 28,
+      "verdict": "good",
+      "confidence": 0.8,
+      "score_breakdown": {
+        "phase_progression": 10,
+        "end_call_present": 10,
+        "no_repetition": 10,
+        "disposition_quality": 10,
+        "short_call_penalty": 0,
+        "language_handling": 0,
+        "protocol_adherence": 15,
+        "discovery_quality": 6,
+        "empathy_tone": 7
+      },
+      "worst_messages": [
+        {
+          "turn": 6,
+          "speaker": "agent",
+          "text": "the closure amount is fifty thousand rupees",
+          "issue_type": "tone",
+          "reason": "The agent should have conveyed urgency about payment without providing the exact amount, which could lead to issues with amount disputes."
+        }
+      ],
+      "reasoning": "The agent adhered to protocol by successfully calling the necessary functions and ending the call appropriately. However, they failed to switch to a more empathetic tone when discussing the closure amount, which could have been more urgent. Discovery was partially effective, as the agent did ask about payment arrangements but did not fully explore the customer's situation before moving to closure.",
+      "phases": [
+        "opening",
+        "closing"
+      ]
+    },
+    {
+      "call_id": "call_06",
+      "customer_name": "Arjun Nair",
+      "disposition": "DISPUTE",
+      "original_disposition": "DISPUTE",
+      "score": 71,
+      "rule_score": 38,
+      "llm_score": 33,
+      "verdict": "good",
+      "confidence": 0.7,
+      "score_breakdown": {
+        "phase_progression": 10,
+        "end_call_present": 10,
+        "no_repetition": 10,
+        "disposition_quality": 8,
+        "short_call_penalty": 0,
+        "language_handling": 0,
+        "protocol_adherence": 10,
+        "discovery_quality": 6,
+        "empathy_tone": 7
+      },
+      "worst_messages": [
+        {
+          "turn": 14,
+          "speaker": "agent",
+          "text": "I recommend reaching out to the institution for resolution. You can also contact support@demolender.com for further assistance regarding your situation.",
+          "issue_type": "missed_resolution",
+          "reason": "The agent should have focused on resolving the dispute rather than directing the customer to another contact."
+        }
+      ],
+      "reasoning": "The agent did not switch to the customer's language despite the initial greeting, which was a clear request for a different language. While the agent followed protocol by calling the necessary functions, they failed to fully explore the customer's concerns about the loan, leading to a missed opportunity for deeper discovery. The tone was mostly empathetic, but the suggestion to contact the institution was inappropriate given the context of the dispute.",
+      "phases": [
+        "opening",
+        "dispute"
+      ]
+    },
+    {
+      "call_id": "call_07",
+      "customer_name": "Meera Joshi",
+      "disposition": "BLANK_CALL",
+      "original_disposition": "LANGUAGE_BARRIER",
+      "score": 34,
+      "rule_score": 15,
+      "llm_score": 19,
+      "verdict": "bad",
+      "confidence": 0.6,
+      "score_breakdown": {
+        "phase_progression": 5,
+        "end_call_present": 0,
+        "no_repetition": 10,
+        "disposition_quality": 0,
+        "short_call_penalty": 0,
+        "language_handling": 15,
+        "protocol_adherence": 0,
+        "discovery_quality": 0,
+        "empathy_tone": 4
+      },
+      "worst_messages": [
+        {
+          "turn": 2,
+          "speaker": "agent",
+          "text": "Let's continue discussing your DemoLender loan. Can you share why you haven't been able to make the payment?",
+          "issue_type": "tone",
+          "reason": "The agent's tone was somewhat robotic and did not adapt well to the customer's repeated confusion."
+        },
+        {
+          "turn": 8,
+          "speaker": "agent",
+          "text": "Let's talk about your DemoLender loan. Can you share what's been preventing you from making the payment?",
+          "issue_type": "repetition",
+          "reason": "The agent repeated the same question multiple times without addressing the customer's confusion."
+        },
+        {
+          "turn": 12,
+          "speaker": "agent",
+          "text": "Can you share what's been preventing you from making the payment?",
+          "issue_type": "repetition",
+          "reason": "The agent repeated the same question again, failing to adapt to the customer's responses."
+        }
+      ],
+      "reasoning": "The agent successfully switched to Tamil upon the customer's request, demonstrating good language handling. However, the call lacked protocol adherence as it did not effectively address the customer's needs or provide a resolution, leading to a blank call. The agent's tone was somewhat robotic, and there were multiple instances of repetition without meaningful engagement with the customer.",
+      "phases": [
+        "opening"
+      ]
+    },
+    {
+      "call_id": "call_08",
+      "customer_name": "Suresh Rao",
+      "disposition": "BLANK_CALL",
+      "original_disposition": "WRONG_NUMBER",
+      "score": 15,
+      "rule_score": 15,
+      "llm_score": 0,
+      "verdict": "bad",
+      "confidence": 0.0,
+      "score_breakdown": {
+        "phase_progression": 5,
+        "end_call_present": 0,
+        "no_repetition": 10,
+        "disposition_quality": 0,
+        "short_call_penalty": 0,
+        "language_handling": 0,
+        "protocol_adherence": 0,
+        "discovery_quality": 0,
+        "empathy_tone": 0
+      },
+      "worst_messages": [
+        {
+          "turn": 6,
+          "speaker": "agent",
+          "text": "I'm here to discuss your DemoLender loan, Suresh Rao. Can we continue?",
+          "issue_type": "missed_resolution",
+          "reason": "The agent failed to establish a proper connection and did not call any functions, leading to a blank call."
+        }
+      ],
+      "reasoning": "The agent did not follow the protocol as no functions were called, resulting in a blank call. There was no effective communication with the customer, and the agent's responses did not address the customer's confusion or establish the purpose of the call effectively.",
+      "phases": [
+        "opening"
+      ]
+    },
+    {
+      "call_id": "call_09",
+      "customer_name": "Kavita Menon",
+      "disposition": "BLANK_CALL",
+      "original_disposition": "INQUIRY",
+      "score": 22,
+      "rule_score": 15,
+      "llm_score": 7,
+      "verdict": "bad",
+      "confidence": 0.1,
+      "score_breakdown": {
+        "phase_progression": 5,
+        "end_call_present": 0,
+        "no_repetition": 10,
+        "disposition_quality": 0,
+        "short_call_penalty": 0,
+        "language_handling": 0,
+        "protocol_adherence": 0,
+        "discovery_quality": 3,
+        "empathy_tone": 4
+      },
+      "worst_messages": [
+        {
+          "turn": 8,
+          "speaker": "agent",
+          "text": "Your total outstanding is fifty thousand rupees. But we can remove all charges and close your loan at just fifty thousand rupees. This is a great opportunity to settle your account. What are your thoughts on this?",
+          "issue_type": "prompt_violation",
+          "reason": "The agent repeated the same amount and did not follow the instruction to avoid disclosing the exact amount to the customer."
+        },
+        {
+          "turn": 10,
+          "speaker": "agent",
+          "text": "The best option available is to close your loan at fifty thousand rupees, which removes all charges. This is your final notice for this offer amount.",
+          "issue_type": "repetition",
+          "reason": "The agent repeated the same offer without exploring the customer's situation further."
+        },
+        {
+          "turn": 22,
+          "speaker": "agent",
+          "text": "However, the total outstanding on your account is fifty thousand rupees. This is a pending obligation that requires immediate attention.",
+          "issue_type": "repetition",
+          "reason": "The agent repeated the same phrase about the total outstanding amount, violating the instruction to avoid repetition."
+        }
+      ],
+      "reasoning": "The agent failed to adhere to protocol by not calling any functions and did not effectively explore the customer's situation before rushing to offers. There were multiple instances of repetition, particularly regarding the total outstanding amount, which detracted from the conversation quality. The tone was somewhat empathetic, but the agent's responses felt robotic and lacked warmth.",
+      "phases": [
+        "opening"
+      ]
+    },
+    {
+      "call_id": "call_10",
+      "customer_name": "Ravi Gupta",
+      "disposition": "BLANK_CALL",
+      "original_disposition": "NO_COMMITMENT",
+      "score": 22,
+      "rule_score": 15,
+      "llm_score": 7,
+      "verdict": "bad",
+      "confidence": 0.0,
+      "score_breakdown": {
+        "phase_progression": 5,
+        "end_call_present": 0,
+        "no_repetition": 10,
+        "disposition_quality": 0,
+        "short_call_penalty": 0,
+        "language_handling": 0,
+        "protocol_adherence": 0,
+        "discovery_quality": 3,
+        "empathy_tone": 4
+      },
+      "worst_messages": [
+        {
+          "turn": 2,
+          "speaker": "agent",
+          "text": "Your total outstanding is fifty thousand rupees. But we can remove all charges and close your loan at just fifty thousand rupees. What has prevented you from making this payment?",
+          "issue_type": "missed_resolution",
+          "reason": "The agent failed to call any functions and did not follow the protocol for discussing amounts."
+        },
+        {
+          "turn": 16,
+          "speaker": "agent",
+          "text": "The total outstanding is fifty thousand rupees, and you can close your loan at the same amount, which means all charges will be removed.",
+          "issue_type": "missed_resolution",
+          "reason": "The agent repeated the amount without verifying the borrower's identity and did not follow the amount hierarchy."
+        }
+      ],
+      "reasoning": "The agent did not call any functions, resulting in a blank call. There was a lack of adherence to protocol, especially regarding the handling of amounts and the absence of any resolution functions. The discovery quality was minimal, as the agent rushed to offers without fully understanding the customer's situation. The tone was somewhat empathetic but included pressure tactics, which detracted from the overall interaction.",
+      "phases": [
+        "opening"
+      ]
+    }
+  ]
+}

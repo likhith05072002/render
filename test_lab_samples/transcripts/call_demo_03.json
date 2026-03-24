@@ -1,0 +1,51 @@
+{
+  "call_id": "call_demo_03",
+  "customer": {
+    "name": "Neeraj Shah",
+    "pending_amount": "61000",
+    "closure_amount": "44000",
+    "settlement_amount": "44000",
+    "dpd": 89
+  },
+  "disposition": "WRONG_NUMBER",
+  "phases_visited": [
+    "opening"
+  ],
+  "total_turns": 4,
+  "analysis": {
+    "bot_flags": {
+      "is_confused": false,
+      "is_repeating": false
+    },
+    "customer_flags": {
+      "is_agitated": false
+    }
+  },
+  "function_calls": [
+    {
+      "turn": 4,
+      "function": "end_call",
+      "params": {
+        "reason": "wrong_party"
+      }
+    }
+  ],
+  "transcript": [
+    {
+      "speaker": "agent",
+      "text": "Hello, this is Alex calling on behalf of DemoLender. Am I speaking with Neeraj Shah?"
+    },
+    {
+      "speaker": "customer",
+      "text": "No, wrong number. There is no Neeraj here."
+    },
+    {
+      "speaker": "agent",
+      "text": "Sorry for the inconvenience. I will update the record and end the call."
+    },
+    {
+      "speaker": "customer",
+      "text": "Thank you."
+    }
+  ]
+}

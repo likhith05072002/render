@@ -1,0 +1,60 @@
+{
+  "call_id": "call_demo_02",
+  "customer": {
+    "name": "Rohit Kumar",
+    "pending_amount": "42000",
+    "closure_amount": "30000",
+    "settlement_amount": "30000",
+    "dpd": 201
+  },
+  "disposition": "BLANK_CALL",
+  "phases_visited": [
+    "opening",
+    "discovery"
+  ],
+  "total_turns": 8,
+  "analysis": {
+    "bot_flags": {
+      "is_confused": true,
+      "is_repeating": true
+    },
+    "customer_flags": {
+      "is_agitated": true
+    }
+  },
+  "function_calls": [],
+  "transcript": [
+    {
+      "speaker": "agent",
+      "text": "Hello, this is Alex from DemoCompany calling about your DemoLender loan."
+    },
+    {
+      "speaker": "customer",
+      "text": "Hindi mein bolo."
+    },
+    {
+      "speaker": "agent",
+      "text": "You have an outstanding amount of forty two thousand rupees and should make a payment today."
+    },
+    {
+      "speaker": "customer",
+      "text": "I said speak in Hindi."
+    },
+    {
+      "speaker": "agent",
+      "text": "If you delay further, it may affect your credit profile."
+    },
+    {
+      "speaker": "customer",
+      "text": "I cannot understand you."
+    },
+    {
+      "speaker": "agent",
+      "text": "You need to arrange payment immediately."
+    },
+    {
+      "speaker": "customer",
+      "text": "This is not helpful."
+    }
+  ]
+}

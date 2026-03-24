@@ -1,0 +1,500 @@
+{
+  "meta": {
+    "model": "gpt-4o-mini",
+    "temperature": 0,
+    "total_tokens_input": 32711,
+    "total_tokens_output": 4342,
+    "total_cost_usd": 0.00751,
+    "verdict_threshold": 62,
+    "scoring": "Tier A (50pts rule-based) + Tier B (50pts LLM-judged)"
+  },
+  "results": [
+    {
+      "call_id": "call_01",
+      "customer_name": "Priya Sharma",
+      "disposition": "PTP",
+      "score": 74,
+      "rule_score": 50,
+      "llm_score": 24,
+      "confidence": 0.75,
+      "verdict": "good",
+      "score_breakdown": {
+        "phase_progression": 20,
+        "end_call_present": 10,
+        "no_repetition": 10,
+        "disposition_quality": 10,
+        "short_call_penalty": 0,
+        "language_handling": 0,
+        "escalation_resolution": 10,
+        "discovery_depth": 6,
+        "empathy_tone": 8
+      },
+      "worst_messages": [
+        {
+          "turn": 3,
+          "speaker": "agent",
+          "text": "Your total outstanding is fifty thousand rupees. But we can remove all charges and close your loan at just thirty five thousand rupees. Would you like to discuss how to resolve this today?",
+          "issue_type": "poor_discovery",
+          "reason": "Jumped to negotiation too quickly without fully understanding the borrower's situation."
+        },
+        {
+          "turn": 21,
+          "speaker": "agent",
+          "text": "Yes, Priya Sharma. I'm here. I was just checking your account. As I mentioned, the total outstanding amount is fifty thousand rupees, but you have the option to close it at thirty five thousand rupees. This means you save the difference. What are your thoughts on this?",
+          "issue_type": "repetition",
+          "reason": "Repeated the same offer without addressing the customer's confusion or the echo issue."
+        },
+        {
+          "turn": 36,
+          "speaker": "agent",
+          "text": "Got it. So, you'd like us to call you back towards the end of the month when you'll have the funds ready. I've scheduled a callback for you then.",
+          "issue_type": "missed_resolution",
+          "reason": "Failed to confirm the callback details clearly and did not ensure the customer understood the next steps."
+        }
+      ],
+      "reasoning": "The agent failed to switch languages despite the customer's clear communication issues, resulting in a low language score. While the agent did follow the escalation path by scheduling a callback, it did not fully explore the borrower's situation before moving to negotiation, leading to a moderate discovery score. The agent maintained a generally empathetic tone but had lapses in clarity and repetition, affecting the overall effectiveness of the call.",
+      "estimated_cost_usd": 0.00062
+    },
+    {
+      "call_id": "call_02",
+      "customer_name": "Rahul Verma",
+      "disposition": "BLANK_CALL",
+      "score": 61,
+      "rule_score": 25,
+      "llm_score": 36,
+      "confidence": 0.8,
+      "verdict": "bad",
+      "score_breakdown": {
+        "phase_progression": 15,
+        "end_call_present": 0,
+        "no_repetition": 10,
+        "disposition_quality": 0,
+        "short_call_penalty": 0,
+        "language_handling": 10,
+        "escalation_resolution": 10,
+        "discovery_depth": 8,
+        "empathy_tone": 8
+      },
+      "worst_messages": [
+        {
+          "turn": 4,
+          "speaker": "agent",
+          "text": "Theek नमस्ते, hai, main aapke आपके saath अट्ठाईस Hindi mein baat हज़ार karta hoon. पाँच",
+          "issue_type": "prompt_violation",
+          "reason": "The agent failed to switch to Hindi immediately after the customer's request for repetition, which is a critical rule."
+        },
+        {
+          "turn": 10,
+          "speaker": "agent",
+          "text": "Okay, Rahul, I understand. I was calling regarding your DemoLender loan. It shows an outstanding amount of thirty-five thousand five hundred and eighty-eight rupees. Could you tell me what's causing the delay in making your payments?",
+          "issue_type": "poor_discovery",
+          "reason": "The agent jumped to discussing the outstanding amount without fully understanding the customer's situation first."
+        },
+        {
+          "turn": 36,
+          "speaker": "agent",
+          "text": "I want to clarify that even though there's a dispute, at six hundred and sixty-eight days past due, every month adds another negative entry to the credit report.",
+          "issue_type": "tone",
+          "reason": "The agent's tone here could be perceived as pressure rather than empathetic, especially given the customer's sensitive situation."
+        },
+        {
+          "turn": 114,
+          "speaker": "agent",
+          "text": "I want to clarify that even though there's a dispute, at six hundred and sixty-eight days past due, every month adds another negative entry to the credit report.",
+          "issue_type": "repetition",
+          "reason": "The agent repeated the same information about the credit report impact, which violates the rule against repeating the same message verbatim."
+        }
+      ],
+      "reasoning": "The agent performed reasonably well in switching to Hindi after a delay and attempted to understand the customer's situation. However, there were critical lapses in following the rules, particularly in switching languages and managing the discovery phase effectively. The agent's tone was mostly empathetic, but there were moments that could be perceived as pressuring the customer, especially regarding credit report impacts.",
+      "estimated_cost_usd": 0.00179
+    },
+    {
+      "call_id": "call_03",
+      "customer_name": "Anjali Reddy",
+      "disposition": "ALREADY_PAID",
+      "score": 42,
+      "rule_score": 17,
+      "llm_score": 25,
+      "confidence": 0.6,
+      "verdict": "bad",
+      "score_breakdown": {
+        "phase_progression": 15,
+        "end_call_present": 0,
+        "no_repetition": 0,
+        "disposition_quality": 2,
+        "short_call_penalty": 0,
+        "language_handling": 10,
+        "escalation_resolution": 5,
+        "discovery_depth": 4,
+        "empathy_tone": 6
+      },
+      "worst_messages": [
+        {
+          "turn": 9,
+          "speaker": "agent",
+          "text": "Ungal peyar Anjali Reddy thaana?",
+          "issue_type": "prompt_violation",
+          "reason": "Agent should have disclosed TOS and POS amounts after confirming identity, but it did not."
+        },
+        {
+          "turn": 72,
+          "speaker": "agent",
+          "text": "जी मैं समझ सकता हूँ कि आपने नौ हज़ार नौ सौ आठ रुपये जमा किए हैं। मैं यह भी समझता हूँ कि आपके क्रेडिट स्कोर पर इसका असर हो रहा होगा क्योंकि आपके भुगतान में देरी के अब तीन सौ तैंतीस दिन हो गए हैं।",
+          "issue_type": "missed_resolution",
+          "reason": "Agent should have escalated the call after the customer claimed to have already paid, instead of continuing to ask for the UTR number."
+        },
+        {
+          "turn": 163,
+          "speaker": "agent",
+          "text": "मैं समझता हूँ आपकी निराशा। मैं केवल वही जानकारी देख सकता हूँ जो हमारे सिस्टम में दर्ज है।",
+          "issue_type": "empathy",
+          "reason": "While the agent attempted to show empathy, it failed to effectively address the customer's frustration and did not offer a resolution."
+        },
+        {
+          "turn": 183,
+          "speaker": "agent",
+          "text": "மன்னிக்கவும். நான் சொல்றது வேகமா இருக்கா? மன்னிக்கவும். நான் மெதுவாக",
+          "issue_type": "tone",
+          "reason": "Agent's response was somewhat robotic and did not adequately adapt to the customer's emotional state."
+        }
+      ],
+      "reasoning": "The agent struggled with language switching and did not effectively escalate the call when the customer claimed to have already paid. Discovery was limited, as the agent did not fully explore the customer's situation before moving to negotiation. While there were attempts at empathy, the overall tone was not warm enough, and the agent repeated requests for the UTR number unnecessarily.",
+      "estimated_cost_usd": 0.00314
+    },
+    {
+      "call_id": "call_04",
+      "customer_name": "Vikram Patel",
+      "disposition": "CALLBACK",
+      "score": 63,
+      "rule_score": 40,
+      "llm_score": 23,
+      "confidence": 0.7,
+      "verdict": "good",
+      "score_breakdown": {
+        "phase_progression": 15,
+        "end_call_present": 10,
+        "no_repetition": 7,
+        "disposition_quality": 8,
+        "short_call_penalty": 0,
+        "language_handling": 0,
+        "escalation_resolution": 10,
+        "discovery_depth": 7,
+        "empathy_tone": 6
+      },
+      "worst_messages": [
+        {
+          "turn": 2,
+          "speaker": "agent",
+          "text": "Hello, this is Alex from DemoCompany, calling about your DemoLender loan. There are some charges on your account I can help remove. Can we talk for a moment? Hello?",
+          "issue_type": "repetition",
+          "reason": "The agent repeated the same opening message verbatim, violating the rule against repetition."
+        },
+        {
+          "turn": 21,
+          "speaker": "agent",
+          "text": "Given that, would you be open to discussing some options",
+          "issue_type": "missed_resolution",
+          "reason": "The agent should have acknowledged the customer's 'No' response and not pushed for negotiation at that moment."
+        },
+        {
+          "turn": 29,
+          "speaker": "agent",
+          "text": "Of course. I was asking if you would be open to discussing some options we have, given that you anticipate it will take a few months to find new employment.",
+          "issue_type": "repetition",
+          "reason": "The agent repeated the same question after the customer expressed confusion, which is against the rules."
+        },
+        {
+          "turn": 70,
+          "speaker": "agent",
+          "text": "I understand",
+          "issue_type": "tone",
+          "reason": "The agent's response was too abrupt and lacked empathy after the customer expressed a need for time, which could have been more supportive."
+        }
+      ],
+      "reasoning": "The agent failed to switch languages despite the customer's confusion, which is a critical violation. While the agent did follow the escalation path by scheduling a callback, it struggled with discovery and empathy, often repeating itself and not fully addressing the customer's needs. Overall, the performance showed some understanding of the situation but lacked effective communication and adherence to the rules.",
+      "estimated_cost_usd": 0.00392
+    },
+    {
+      "call_id": "call_05",
+      "customer_name": "Deepa Krishnan",
+      "disposition": "STRONGEST_PTP",
+      "score": 73,
+      "rule_score": 50,
+      "llm_score": 23,
+      "confidence": 0.75,
+      "verdict": "good",
+      "score_breakdown": {
+        "phase_progression": 20,
+        "end_call_present": 10,
+        "no_repetition": 10,
+        "disposition_quality": 10,
+        "short_call_penalty": 0,
+        "language_handling": 0,
+        "escalation_resolution": 10,
+        "discovery_depth": 6,
+        "empathy_tone": 7
+      },
+      "worst_messages": [
+        {
+          "turn": 4,
+          "speaker": "agent",
+          "text": "Hello? There's fifty thousand rupees pending on your DemoLender loan. Have you been facing any difficulties?",
+          "issue_type": "poor_discovery",
+          "reason": "Jumped to negotiation too quickly without fully understanding the borrower's situation."
+        },
+        {
+          "turn": 6,
+          "speaker": "agent",
+          "text": "I can help you with some options to manage the fifty thousand",
+          "issue_type": "poor_discovery",
+          "reason": "Did not explore the borrower's reasons for non-payment before offering options."
+        },
+        {
+          "turn": 50,
+          "speaker": "agent",
+          "text": "We can remove penalty charges from that amount. Would you like me to proceed with a payment plan of five thousand three hundred rupees per month?",
+          "issue_type": "missed_resolution",
+          "reason": "Failed to confirm the borrower's understanding and agreement before proceeding with the payment plan."
+        },
+        {
+          "turn": 18,
+          "speaker": "agent",
+          "text": "end_call({\"reason\": \"resolved_callback_scheduled\"})",
+          "issue_type": "missed_resolution",
+          "reason": "Did not ensure all borrower concerns were addressed before ending the call."
+        }
+      ],
+      "reasoning": "The agent failed to switch languages despite the customer's unclear communication, which indicates a language barrier. The discovery phase was insufficient as the agent jumped to negotiation without fully understanding the borrower's situation. While there was some empathy shown, the agent's responses were not fully aligned with the required empathetic tone, and there were missed opportunities for resolution before ending the call.",
+      "estimated_cost_usd": 0.00461
+    },
+    {
+      "call_id": "call_06",
+      "customer_name": "Arjun Nair",
+      "disposition": "DISPUTE",
+      "score": 72,
+      "rule_score": 48,
+      "llm_score": 24,
+      "confidence": 0.5,
+      "verdict": "good",
+      "score_breakdown": {
+        "phase_progression": 20,
+        "end_call_present": 10,
+        "no_repetition": 10,
+        "disposition_quality": 8,
+        "short_call_penalty": 0,
+        "language_handling": 0,
+        "escalation_resolution": 10,
+        "discovery_depth": 7,
+        "empathy_tone": 7
+      },
+      "worst_messages": [
+        {
+          "turn": 1,
+          "speaker": "agent",
+          "text": "Hello, this is Alex from DemoCompany, calling about your DemoLender loan. There are some charges on your account I can help remove. Can we talk for a moment?",
+          "issue_type": "prompt_violation",
+          "reason": "The agent did not disclose TOS and POS amounts after confirming identity, violating the opening rules."
+        },
+        {
+          "turn": 19,
+          "speaker": "agent",
+          "text": "I understand your point of view. Since this is beyond what I can resolve, I recommend reaching out to DemoLender directly. You can email them at support@demolender.com or call their customer service.",
+          "issue_type": "missed_resolution",
+          "reason": "The agent should have escalated the dispute instead of directing the customer to contact DemoLender, violating the escalation rules."
+        }
+      ],
+      "reasoning": "The agent failed to switch languages when the customer expressed dissatisfaction, which was a critical rule violation. While the agent did attempt to understand the customer's situation, it did not fully explore the dispute before suggesting the customer contact DemoLender directly, which was not an appropriate resolution path. The overall tone was somewhat empathetic, but the agent's failure to follow key instructions significantly impacted the call's effectiveness.",
+      "estimated_cost_usd": 0.00511
+    },
+    {
+      "call_id": "call_07",
+      "customer_name": "Meera Joshi",
+      "disposition": "LANGUAGE_BARRIER",
+      "score": 38,
+      "rule_score": 15,
+      "llm_score": 23,
+      "confidence": 0.5,
+      "verdict": "bad",
+      "score_breakdown": {
+        "phase_progression": 10,
+        "end_call_present": 0,
+        "no_repetition": 0,
+        "disposition_quality": 5,
+        "short_call_penalty": 0,
+        "language_handling": 10,
+        "escalation_resolution": 5,
+        "discovery_depth": 4,
+        "empathy_tone": 4
+      },
+      "worst_messages": [
+        {
+          "turn": 2,
+          "speaker": "agent",
+          "text": "Hello, this is Alex from DemoCompany, calling about your DemoLender loan. There are some charges on your account I can help remove. Can we talk for a moment? Hello?",
+          "issue_type": "repetition",
+          "reason": "The agent repeated the same message verbatim, violating the rule against repetition."
+        },
+        {
+          "turn": 19,
+          "speaker": "agent",
+          "text": "I am Alex from DemoCompany, and I'm calling about your DemoLender loan. There's fifty-five thousand three hundred and thirty-five rupees pending.",
+          "issue_type": "repetition",
+          "reason": "The agent repeated the same information about the loan amount, violating the rule against repetition."
+        },
+        {
+          "turn": 37,
+          "speaker": "agent",
+          "text": "மன்னிக்கவும். நீங்க என்ன சொல்றீங்கன்னு எனக்குப் புரியலை. நீங்க \"பல கொஜனால் செலுத்துப்பதென என குவிலர்தே இருக்கிறது\" அப்படின்னு சொன்னது தெளிவா இல்லை. தயவுசெய்து மறுபடியும் சொல்ல முடியுமா?",
+          "issue_type": "poor_discovery",
+          "reason": "The agent failed to understand the customer's concerns and did not effectively explore the root cause of the payment issue."
+        },
+        {
+          "turn": 54,
+          "speaker": "agent",
+          "text": "மன்னிக்கவும். நீங்க என்ன சொல்றீங்கன்னு எனக்குப் புரியல. கொஞ்சம் தெளிவா சொல்ல முடியுமா?",
+          "issue_type": "poor_discovery",
+          "reason": "The agent did not make an effort to clarify the customer's situation and instead asked for repetition, indicating a lack of effective discovery."
+        }
+      ],
+      "reasoning": "The agent struggled with language comprehension and failed to effectively switch to Tamil, leading to significant communication barriers. The agent also repeated information multiple times without progressing the conversation, indicating poor discovery and empathy. Overall, the agent did not follow the system prompts effectively, particularly in terms of language handling and understanding the customer's situation.",
+      "estimated_cost_usd": 0.00584
+    },
+    {
+      "call_id": "call_08",
+      "customer_name": "Suresh Rao",
+      "disposition": "WRONG_NUMBER",
+      "score": 68,
+      "rule_score": 45,
+      "llm_score": 23,
+      "confidence": 0.5,
+      "verdict": "good",
+      "score_breakdown": {
+        "phase_progression": 20,
+        "end_call_present": 10,
+        "no_repetition": 7,
+        "disposition_quality": 8,
+        "short_call_penalty": 0,
+        "language_handling": 0,
+        "escalation_resolution": 15,
+        "discovery_depth": 4,
+        "empathy_tone": 4
+      },
+      "worst_messages": [
+        {
+          "turn": 2,
+          "speaker": "agent",
+          "text": "Hello, this is Alex from DemoCompany, calling about your DemoLender loan. There are some charges on your account I can help remove. Can we talk for a moment? Hello?",
+          "issue_type": "repetition",
+          "reason": "The agent repeated the same message verbatim, violating the rule against repetition."
+        },
+        {
+          "turn": 14,
+          "speaker": "agent",
+          "text": "I see. Suresh Rao, I'm calling about your DemoLender education loan. We're showing a pending amount of fifty thousand rupees. Can you tell me a little about why you haven't been able to make the payments?",
+          "issue_type": "poor_discovery",
+          "reason": "The agent jumped to asking about payment without confirming the identity of the borrower or understanding the situation, violating the discovery phase rules."
+        }
+      ],
+      "reasoning": "The agent failed to switch language or adapt to the customer's responses, leading to confusion and repetition. While the escalation to end the call was correct, the agent did not effectively discover the borrower's situation and repeated the same opening message multiple times, which detracted from the overall performance.",
+      "estimated_cost_usd": 0.00629
+    },
+    {
+      "call_id": "call_09",
+      "customer_name": "Kavita Menon",
+      "disposition": "INQUIRY",
+      "score": 50,
+      "rule_score": 30,
+      "llm_score": 20,
+      "confidence": 0.5,
+      "verdict": "bad",
+      "score_breakdown": {
+        "phase_progression": 15,
+        "end_call_present": 10,
+        "no_repetition": 0,
+        "disposition_quality": 5,
+        "short_call_penalty": 0,
+        "language_handling": 0,
+        "escalation_resolution": 10,
+        "discovery_depth": 4,
+        "empathy_tone": 6
+      },
+      "worst_messages": [
+        {
+          "turn": 6,
+          "speaker": "agent",
+          "text": "So, regarding your DemoLender loan, there's a pending amount of fifty thousand rupees. Looking at",
+          "issue_type": "poor_discovery",
+          "reason": "The agent jumped to discussing the amount without fully understanding the borrower's situation or confirming the details, violating the discovery phase rules."
+        },
+        {
+          "turn": 33,
+          "speaker": "agent",
+          "text": "What I can confirm right now is that your account is already at three hundred and three days past due, which means it's in NPA territory.",
+          "issue_type": "tone",
+          "reason": "The agent's tone was somewhat clinical and did not convey empathy regarding the borrower's situation, which could have been more supportive."
+        },
+        {
+          "turn": 36,
+          "speaker": "agent",
+          "text": "I was explaining that closing your account now, even with a settlement, would be better for your credit score because it stops further negative entries from being added.",
+          "issue_type": "repetition",
+          "reason": "The agent repeated information about credit score impact without addressing the borrower's specific concerns or questions, violating the rule against repetition."
+        }
+      ],
+      "reasoning": "The agent failed to switch languages despite the customer's confusion and requests for clarity, which is a critical violation. While there was some attempt to escalate the call by scheduling a callback, the discovery phase was poorly executed, leading to a lack of understanding of the borrower's situation. The tone was not consistently empathetic, and there were instances of repetition that detracted from the overall effectiveness of the call.",
+      "estimated_cost_usd": 0.00694
+    },
+    {
+      "call_id": "call_10",
+      "customer_name": "Ravi Gupta",
+      "disposition": "NO_COMMITMENT",
+      "score": 61,
+      "rule_score": 23,
+      "llm_score": 38,
+      "confidence": 0.75,
+      "verdict": "bad",
+      "score_breakdown": {
+        "phase_progression": 15,
+        "end_call_present": 10,
+        "no_repetition": 10,
+        "disposition_quality": 4,
+        "short_call_penalty": -16,
+        "language_handling": 15,
+        "escalation_resolution": 10,
+        "discovery_depth": 6,
+        "empathy_tone": 7
+      },
+      "worst_messages": [
+        {
+          "turn": 4,
+          "speaker": "agent",
+          "text": "Okay, give me just a moment... Okay, Ravi Gupta, to help me understand better, could you tell me a little bit about what's making it difficult to pay the fifty-five thousand rupees for your DemoLender loan right now?",
+          "issue_type": "poor_discovery",
+          "reason": "Jumped to negotiation too quickly without fully understanding the borrower's situation; should have continued exploring the root cause."
+        },
+        {
+          "turn": 12,
+          "speaker": "agent",
+          "text": "Let me pull up your account details...",
+          "issue_type": "missed_resolution",
+          "reason": "Agent should not have pulled up account details when the customer was confused and needed to express their situation; should have focused on understanding the customer's concerns."
+        },
+        {
+          "turn": 18,
+          "speaker": "agent",
+          "text": "Okay, I understand you need some time to consider the options. Would it be alright if I checked in with you in about a week? Also, just a reminder that every month the loan remains open, it adds a negative entry to your credit report. The offer for penalty removal will still be open when we next speak. Please save my number and feel free to call whenever you're ready.",
+          "issue_type": "tone",
+          "reason": "While attempting to be empathetic, the reminder about the negative entry on the credit report could be perceived as pressure; should have focused on understanding the customer's situation more."
+        }
+      ],
+      "reasoning": "The agent performed well in switching to the appropriate language and attempted to follow the escalation path, but there were significant gaps in discovery and empathy. The agent jumped to negotiation too quickly and did not fully explore the borrower's situation, leading to missed opportunities for resolution. The tone used in some messages could also be perceived as pressuring rather than empathetic.",
+      "estimated_cost_usd": 0.00751
+    }
+  ],
+  "evaluation": {
+    "accuracy_pct": 100.0,
+    "correct": 10,
+    "total": 10,
+    "mismatches": []
+  }
+}

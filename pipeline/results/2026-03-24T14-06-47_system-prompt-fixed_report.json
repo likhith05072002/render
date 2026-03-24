@@ -1,0 +1,517 @@
+{
+  "meta": {
+    "prompt_file": "system-prompt-fixed.md",
+    "transcripts_dir": "transcripts",
+    "timestamp": "2026-03-24T14:06:47.200759",
+    "total_calls": 10,
+    "max_turns_per_call": 15,
+    "model": "gpt-4o-mini",
+    "temperature": 0,
+    "total_tokens_input": 1261163,
+    "total_tokens_output": 14742,
+    "total_cost_usd": 0.19802,
+    "scoring": "Tier A (50pts rule-based) + Tier B (50pts LLM-judged, dynamic prompt adherence)"
+  },
+  "aggregate": {
+    "mean_score": 51.1,
+    "median_score": 48.0,
+    "min_score": 22,
+    "max_score": 87,
+    "good_count": 3,
+    "bad_count": 7,
+    "good_pct": 30.0,
+    "dim_averages": {
+      "language_handling": 6,
+      "protocol_adherence": 8.5,
+      "discovery_quality": 4.6,
+      "empathy_tone": 6.1
+    },
+    "weakest_dimension": "language_handling",
+    "strongest_dimension": "empathy_tone"
+  },
+  "results": [
+    {
+      "call_id": "call_01",
+      "customer_name": "Priya Sharma",
+      "disposition": "BLANK_CALL",
+      "original_disposition": "PTP",
+      "score": 48,
+      "rule_score": 15,
+      "llm_score": 33,
+      "verdict": "bad",
+      "confidence": 0.8,
+      "score_breakdown": {
+        "phase_progression": 5,
+        "end_call_present": 0,
+        "no_repetition": 10,
+        "disposition_quality": 0,
+        "short_call_penalty": 0,
+        "language_handling": 0,
+        "protocol_adherence": 10,
+        "discovery_quality": 6,
+        "empathy_tone": 7
+      },
+      "worst_messages": [
+        {
+          "turn": 8,
+          "speaker": "agent",
+          "text": "I understand. Let me check the connection and try again. If the issue persists, I can schedule a callback for you. Please hold on for a moment.",
+          "issue_type": "missed_resolution",
+          "reason": "The agent should have immediately scheduled a callback after the customer's connection issue was mentioned."
+        },
+        {
+          "turn": 10,
+          "speaker": "agent",
+          "text": "Thank you for letting me know. I will continue with our conversation.",
+          "issue_type": "tone",
+          "reason": "The agent's response was dismissive of the customer's concern about the echo, lacking empathy."
+        }
+      ],
+      "reasoning": "The agent failed to switch to a callback immediately after the customer reported connection issues, which is a critical protocol violation. While the agent did attempt to explore the customer's challenges, the conversation was rushed and lacked depth in discovery. The tone was mostly empathetic, but there were moments where it felt robotic, especially when addressing the customer's concerns about the call quality.",
+      "phases": [
+        "opening"
+      ]
+    },
+    {
+      "call_id": "call_02",
+      "customer_name": "Rahul Verma",
+      "disposition": "ALREADY_PAID",
+      "original_disposition": "BLANK_CALL",
+      "score": 87,
+      "rule_score": 37,
+      "llm_score": 50,
+      "verdict": "good",
+      "confidence": 1.0,
+      "score_breakdown": {
+        "phase_progression": 10,
+        "end_call_present": 10,
+        "no_repetition": 10,
+        "disposition_quality": 7,
+        "short_call_penalty": 0,
+        "language_handling": 15,
+        "protocol_adherence": 15,
+        "discovery_quality": 10,
+        "empathy_tone": 10
+      },
+      "worst_messages": [],
+      "reasoning": "The agent successfully switched to Hindi immediately after the customer used a non-English phrase, adhering to the language handling protocol. All required functions were called correctly, including switching languages, proceeding to dispute, and ending the call. The agent explored the customer's situation thoroughly, demonstrating empathy and understanding throughout the conversation, which contributed to a high score in discovery quality and empathy tone.",
+      "phases": [
+        "opening",
+        "dispute"
+      ]
+    },
+    {
+      "call_id": "call_03",
+      "customer_name": "Anjali Reddy",
+      "disposition": "NO_COMMITMENT",
+      "original_disposition": "ALREADY_PAID",
+      "score": 66,
+      "rule_score": 29,
+      "llm_score": 37,
+      "verdict": "good",
+      "confidence": 0.8,
+      "score_breakdown": {
+        "phase_progression": 5,
+        "end_call_present": 10,
+        "no_repetition": 10,
+        "disposition_quality": 4,
+        "short_call_penalty": 0,
+        "language_handling": 15,
+        "protocol_adherence": 15,
+        "discovery_quality": 3,
+        "empathy_tone": 4
+      },
+      "worst_messages": [
+        {
+          "turn": 14,
+          "speaker": "agent",
+          "text": "நான் புரிந்துகொள்கிறேன், ஆனால் இப்போது நீங்கள் முப்பது ஐந்து ஆயிரம் ரூபாய்க்கு மூடுவதற்கான சலுகையைப் பெற வேண்டும். இது உங்கள் கடனை மூடுவதற்கான சிறந்த வாய்ப்பு. நீங்கள் எவ்வளவு பணம் ஏற்பாடு செய்ய முடியும்?",
+          "issue_type": "tone",
+          "reason": "The agent's tone was somewhat robotic and pressured the customer, lacking warmth and empathy."
+        }
+      ],
+      "reasoning": "The agent successfully switched to Tamil immediately after the customer's first non-English input and adhered to protocol by ending the call appropriately. However, the discovery quality was minimal, as the agent rushed to offers without fully understanding the customer's situation. The tone was somewhat robotic, which detracted from the overall empathy conveyed during the call.",
+      "phases": [
+        "opening"
+      ]
+    },
+    {
+      "call_id": "call_04",
+      "customer_name": "Vikram Patel",
+      "disposition": "BLANK_CALL",
+      "original_disposition": "CALLBACK",
+      "score": 25,
+      "rule_score": 15,
+      "llm_score": 10,
+      "verdict": "bad",
+      "confidence": 0.5,
+      "score_breakdown": {
+        "phase_progression": 5,
+        "end_call_present": 0,
+        "no_repetition": 10,
+        "disposition_quality": 0,
+        "short_call_penalty": 0,
+        "language_handling": 0,
+        "protocol_adherence": 0,
+        "discovery_quality": 3,
+        "empathy_tone": 7
+      },
+      "worst_messages": [
+        {
+          "turn": 8,
+          "speaker": "agent",
+          "text": "It's important to address your pending obligation of fifty thousand rupees.",
+          "issue_type": "missed_resolution",
+          "reason": "The agent failed to call any functions or provide a resolution despite the ongoing conversation."
+        }
+      ],
+      "reasoning": "The agent did not switch to any functions or provide a resolution, resulting in a blank call. While the agent displayed some empathy and attempted to engage the customer, the lack of protocol adherence and failure to address the customer's situation effectively led to a low score. The agent also repeated the same phrase about the pending obligation multiple times, which violates the instruction to avoid repetition.",
+      "phases": [
+        "opening"
+      ]
+    },
+    {
+      "call_id": "call_05",
+      "customer_name": "Deepa Krishnan",
+      "disposition": "BLANK_CALL",
+      "original_disposition": "STRONGEST_PTP",
+      "score": 48,
+      "rule_score": 15,
+      "llm_score": 33,
+      "verdict": "bad",
+      "confidence": 0.7,
+      "score_breakdown": {
+        "phase_progression": 5,
+        "end_call_present": 0,
+        "no_repetition": 10,
+        "disposition_quality": 0,
+        "short_call_penalty": 0,
+        "language_handling": 0,
+        "protocol_adherence": 10,
+        "discovery_quality": 6,
+        "empathy_tone": 7
+      },
+      "worst_messages": [
+        {
+          "turn": 10,
+          "speaker": "agent",
+          "text": "I understand. It seems there might be a connection issue. I will check in again later. Thank you for your time.",
+          "issue_type": "missed_resolution",
+          "reason": "The agent ended the call without resolving the customer's needs or confirming the payment arrangement."
+        },
+        {
+          "turn": 22,
+          "speaker": "agent",
+          "text": "I understand. It seems there might be a connection issue. I will check in again later. Thank you for your time.",
+          "issue_type": "missed_resolution",
+          "reason": "The agent repeated the same response about connection issues instead of addressing the customer's concerns."
+        }
+      ],
+      "reasoning": "The agent failed to switch languages despite the customer speaking in a non-English manner, resulting in a score of 0 for language handling. Protocol adherence was mostly followed, but the agent did not effectively resolve the customer's needs, leading to missed resolutions. The discovery quality was partial, as the agent asked some questions but did not fully explore the customer's situation. The tone was empathetic, but there were some lapses in engagement and responsiveness.",
+      "phases": [
+        "opening"
+      ]
+    },
+    {
+      "call_id": "call_06",
+      "customer_name": "Arjun Nair",
+      "disposition": "BLANK_CALL",
+      "original_disposition": "DISPUTE",
+      "score": 48,
+      "rule_score": 15,
+      "llm_score": 33,
+      "verdict": "bad",
+      "confidence": 0.8,
+      "score_breakdown": {
+        "phase_progression": 5,
+        "end_call_present": 0,
+        "no_repetition": 10,
+        "disposition_quality": 0,
+        "short_call_penalty": 0,
+        "language_handling": 0,
+        "protocol_adherence": 10,
+        "discovery_quality": 6,
+        "empathy_tone": 7
+      },
+      "worst_messages": [
+        {
+          "turn": 1,
+          "speaker": "agent",
+          "text": "Can you please clarify what you mean by 'hire'?",
+          "issue_type": "missed_resolution",
+          "reason": "The customer used non-English words, which should have triggered a language switch."
+        }
+      ],
+      "reasoning": "The agent failed to switch languages after the customer used non-English terms, which is a critical violation of the protocol. While the agent adhered to the function calling and attempted to gather information about the payment, the discovery process was incomplete as it did not fully explore the customer's concerns before moving to resolution. The tone was mostly empathetic, but there were moments of rigidity in responses.",
+      "phases": [
+        "opening"
+      ]
+    },
+    {
+      "call_id": "call_07",
+      "customer_name": "Meera Joshi",
+      "disposition": "BLANK_CALL",
+      "original_disposition": "LANGUAGE_BARRIER",
+      "score": 63,
+      "rule_score": 15,
+      "llm_score": 48,
+      "verdict": "bad",
+      "confidence": 0.8,
+      "score_breakdown": {
+        "phase_progression": 5,
+        "end_call_present": 0,
+        "no_repetition": 10,
+        "disposition_quality": 0,
+        "short_call_penalty": 0,
+        "language_handling": 15,
+        "protocol_adherence": 10,
+        "discovery_quality": 6,
+        "empathy_tone": 7
+      },
+      "worst_messages": [
+        {
+          "turn": 8,
+          "speaker": "agent",
+          "text": "I'm here to help with your DemoLender loan. You have fifty thousand rupees pending. Can we discuss this?",
+          "issue_type": "repetition",
+          "reason": "Repeated the same phrase about the pending amount, violating the rule of not repeating phrases."
+        }
+      ],
+      "reasoning": "The agent successfully switched to Tamil after the customer requested it, adhering to the language handling protocol. However, there were multiple instances of repetition and a lack of deeper discovery into the customer's situation, which affected the overall quality of the conversation. The agent maintained a somewhat empathetic tone but could have improved by avoiding repetitive phrases.",
+      "phases": [
+        "opening"
+      ]
+    },
+    {
+      "call_id": "call_08",
+      "customer_name": "Suresh Rao",
+      "disposition": "WRONG_NUMBER",
+      "original_disposition": "WRONG_NUMBER",
+      "score": 82,
+      "rule_score": 48,
+      "llm_score": 34,
+      "verdict": "good",
+      "confidence": 0.8,
+      "score_breakdown": {
+        "phase_progression": 20,
+        "end_call_present": 10,
+        "no_repetition": 10,
+        "disposition_quality": 8,
+        "short_call_penalty": 0,
+        "language_handling": 15,
+        "protocol_adherence": 15,
+        "discovery_quality": 0,
+        "empathy_tone": 4
+      },
+      "worst_messages": [
+        {
+          "turn": 10,
+          "speaker": "agent",
+          "text": "[CALLED: end_call, end_call]",
+          "issue_type": "missed_resolution",
+          "reason": "The agent did not attempt to verify the identity of the customer or explore further before ending the call."
+        }
+      ],
+      "reasoning": "The agent correctly identified the wrong number and followed protocol by calling the end_call function. However, there was no discovery or attempt to clarify the situation with the customer, leading to a lack of empathy and understanding. The agent's tone was somewhat robotic, especially in the repeated questioning without adapting to the customer's responses.",
+      "phases": [
+        "opening"
+      ]
+    },
+    {
+      "call_id": "call_09",
+      "customer_name": "Kavita Menon",
+      "disposition": "BLANK_CALL",
+      "original_disposition": "INQUIRY",
+      "score": 22,
+      "rule_score": 15,
+      "llm_score": 7,
+      "verdict": "bad",
+      "confidence": 0.5,
+      "score_breakdown": {
+        "phase_progression": 5,
+        "end_call_present": 0,
+        "no_repetition": 10,
+        "disposition_quality": 0,
+        "short_call_penalty": 0,
+        "language_handling": 0,
+        "protocol_adherence": 0,
+        "discovery_quality": 3,
+        "empathy_tone": 4
+      },
+      "worst_messages": [
+        {
+          "turn": 8,
+          "speaker": "agent",
+          "text": "Your total outstanding is fifty thousand rupees. But we can remove all charges and close your loan at just fifty thousand rupees. This is your best option to resolve the loan. What are your thoughts on this?",
+          "issue_type": "missed_resolution",
+          "reason": "The agent did not follow the protocol for verifying the customer's claim about the outstanding amount before discussing options."
+        },
+        {
+          "turn": 12,
+          "speaker": "agent",
+          "text": "Let me verify the exact figures for you. However, I want to emphasize that the total outstanding is fifty thousand rupees, and the closure amount is also fifty thousand rupees. This is a pending obligation that requires immediate attention. Can we discuss how to resolve this?",
+          "issue_type": "repetition",
+          "reason": "The agent repeated the same information about the outstanding amount multiple times without addressing the customer's specific concerns."
+        }
+      ],
+      "reasoning": "The agent failed to switch languages when the customer used a non-English term, which is a critical violation of the protocol. Additionally, the agent did not call any functions to resolve the call, leading to a blank call situation. While there was some attempt to understand the customer's situation, the agent rushed to offer solutions without fully exploring the customer's claims, resulting in minimal discovery quality. The tone was somewhat empathetic but included some pressure tactics, which detracted from the overall effectiveness of the call.",
+      "phases": [
+        "opening"
+      ]
+    },
+    {
+      "call_id": "call_10",
+      "customer_name": "Ravi Gupta",
+      "disposition": "BLANK_CALL",
+      "original_disposition": "NO_COMMITMENT",
+      "score": 22,
+      "rule_score": 15,
+      "llm_score": 7,
+      "verdict": "bad",
+      "confidence": 0.5,
+      "score_breakdown": {
+        "phase_progression": 5,
+        "end_call_present": 0,
+        "no_repetition": 10,
+        "disposition_quality": 0,
+        "short_call_penalty": 0,
+        "language_handling": 0,
+        "protocol_adherence": 0,
+        "discovery_quality": 3,
+        "empathy_tone": 4
+      },
+      "worst_messages": [
+        {
+          "turn": 2,
+          "speaker": "agent",
+          "text": "Your total outstanding is fifty thousand rupees. But we can remove all charges and close your loan at just fifty thousand rupees. What has prevented you from making the payment?",
+          "issue_type": "missed_resolution",
+          "reason": "The agent did not call any functions and rushed to offers without understanding the customer's situation."
+        },
+        {
+          "turn": 4,
+          "speaker": "agent",
+          "text": "This fifty thousand closure offer is available now. You MUST act on this before it expires. Failure to pay will result in escalation. Can you share what's been holding you back from paying?",
+          "issue_type": "tone",
+          "reason": "The tone was aggressive and did not convey empathy, violating the principle of maintaining a warm tone."
+        }
+      ],
+      "reasoning": "The agent failed to call any functions, resulting in a blank call. There was minimal discovery as the agent rushed to offers without fully understanding the customer's situation. The tone was somewhat robotic and aggressive, lacking the necessary empathy to engage the customer effectively.",
+      "phases": [
+        "opening"
+      ]
+    }
+  ],
+  "comparison": {
+    "baseline_prompt": "system-prompt.md",
+    "current_prompt": "system-prompt-fixed.md",
+    "baseline_mean": 31.4,
+    "current_mean": 51.1,
+    "delta_mean": 19.7,
+    "verdict": "IMPROVED",
+    "flipped_to_good": 3,
+    "flipped_to_bad": 0,
+    "per_call_deltas": [
+      {
+        "call_id": "call_01",
+        "baseline_score": 25,
+        "current_score": 48,
+        "delta": 23,
+        "baseline_verdict": "bad",
+        "current_verdict": "bad",
+        "flipped": false,
+        "worsened": false
+      },
+      {
+        "call_id": "call_02",
+        "baseline_score": 53,
+        "current_score": 87,
+        "delta": 34,
+        "baseline_verdict": "bad",
+        "current_verdict": "good",
+        "flipped": true,
+        "worsened": false
+      },
+      {
+        "call_id": "call_03",
+        "baseline_score": 47,
+        "current_score": 66,
+        "delta": 19,
+        "baseline_verdict": "bad",
+        "current_verdict": "good",
+        "flipped": true,
+        "worsened": false
+      },
+      {
+        "call_id": "call_04",
+        "baseline_score": 25,
+        "current_score": 25,
+        "delta": 0,
+        "baseline_verdict": "bad",
+        "current_verdict": "bad",
+        "flipped": false,
+        "worsened": false
+      },
+      {
+        "call_id": "call_05",
+        "baseline_score": 22,
+        "current_score": 48,
+        "delta": 26,
+        "baseline_verdict": "bad",
+        "current_verdict": "bad",
+        "flipped": false,
+        "worsened": false
+      },
+      {
+        "call_id": "call_06",
+        "baseline_score": 40,
+        "current_score": 48,
+        "delta": 8,
+        "baseline_verdict": "bad",
+        "current_verdict": "bad",
+        "flipped": false,
+        "worsened": false
+      },
+      {
+        "call_id": "call_07",
+        "baseline_score": 39,
+        "current_score": 63,
+        "delta": 24,
+        "baseline_verdict": "bad",
+        "current_verdict": "bad",
+        "flipped": false,
+        "worsened": false
+      },
+      {
+        "call_id": "call_08",
+        "baseline_score": 19,
+        "current_score": 82,
+        "delta": 63,
+        "baseline_verdict": "bad",
+        "current_verdict": "good",
+        "flipped": true,
+        "worsened": false
+      },
+      {
+        "call_id": "call_09",
+        "baseline_score": 22,
+        "current_score": 22,
+        "delta": 0,
+        "baseline_verdict": "bad",
+        "current_verdict": "bad",
+        "flipped": false,
+        "worsened": false
+      },
+      {
+        "call_id": "call_10",
+        "baseline_score": 22,
+        "current_score": 22,
+        "delta": 0,
+        "baseline_verdict": "bad",
+        "current_verdict": "bad",
+        "flipped": false,
+        "worsened": false
+      }
+    ]
+  }
+}
