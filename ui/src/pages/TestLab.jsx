@@ -113,7 +113,97 @@ function Panel({ title, subtitle, children, defaultOpen = false }) {
   )
 }
 
+function ScoreBreakdownDetail({ r }) {
+  const bd = r.score_breakdown || {}
+  const tierA = [
+    { label: 'Phase Progression', value: bd.phase_progression ?? 0, max: 20 },
+    { label: 'end_call Present', value: bd.end_call_present ?? 0, max: 10 },
+    { label: 'No Repetition', value: bd.no_repetition ?? 0, max: 10 },
+    { label: 'Disposition Quality', value: bd.disposition_quality ?? 0, max: 10 },
+    { label: 'Short Call Penalty', value: bd.short_call_penalty ?? 0, max: 0 },
+  ]
+  const tierB = [
+    { label: 'Language Handling', value: bd.language_handling ?? 0, max: 15 },
+    { label: 'Protocol Adherence', value: bd.protocol_adherence ?? bd.escalation_resolution ?? 0, max: 15 },
+    { label: 'Discovery Quality', value: bd.discovery_quality ?? bd.discovery_depth ?? 0, max: 10 },
+    { label: 'Empathy & Tone', value: bd.empathy_tone ?? 0, max: 10 },
+  ]
+
+  return (
+    <tr>
+      <td colSpan={6} style={{ background: '#f8f9fa', padding: '1rem 1.5rem' }}>
+        <div className="row g-3">
+
+          {/* Tier A */}
+          <div className="col-md-4">
+            <div className="fw-semibold small mb-2" style={{ color: '#1864ab' }}>
+              Tier A — Rule-Based ({r.rule_score}/50)
+            </div>
+            {tierA.map(({ label, value, max }) => (
+              <div key={label} className="d-flex justify-content-between small py-1 border-bottom">
+                <span style={{ color: '#495057' }}>{label}</span>
+                <span className="fw-bold" style={{ color: value < 0 ? '#c92a2a' : '#2b8a3e' }}>
+                  {value > 0 ? '+' : ''}{value}{max > 0 ? `/${max}` : ''}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Tier B */}
+          <div className="col-md-4">
+            <div className="fw-semibold small mb-2" style={{ color: '#862e9c' }}>
+              Tier B — LLM Judge ({r.llm_score}/50)
+            </div>
+            {tierB.map(({ label, value, max }) => (
+              <div key={label} className="mb-2">
+                <div className="d-flex justify-content-between mb-1">
+                  <span style={{ fontSize: '0.75rem', color: '#495057' }}>{label}</span>
+                  <span style={{ fontSize: '0.75rem', fontWeight: 600 }}>{value}/{max}</span>
+                </div>
+                <div className="dim-bar-wrap">
+                  <div
+                    className={`dim-bar ${Math.round((value / max) * 100) >= 70 ? 'high' : Math.round((value / max) * 100) >= 40 ? 'mid' : 'low'}`}
+                    style={{ width: `${Math.round((value / max) * 100)}%` }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Reasoning + Worst Messages */}
+          <div className="col-md-4">
+            {r.reasoning && (
+              <div className="mb-3">
+                <div className="fw-semibold small mb-1" style={{ color: '#495057' }}>LLM Reasoning</div>
+                <div style={{ fontSize: '0.75rem', color: '#666', lineHeight: 1.5 }}>{r.reasoning}</div>
+              </div>
+            )}
+            {r.worst_messages?.length > 0 && (
+              <div>
+                <div className="fw-semibold small mb-1" style={{ color: '#c92a2a' }}>
+                  Worst Messages ({r.worst_messages.length})
+                </div>
+                {r.worst_messages.map((wm, i) => (
+                  <div key={i} className="mb-2 p-2 rounded" style={{ background: '#fff3f3', fontSize: '0.72rem' }}>
+                    <div className="fw-bold" style={{ color: '#c92a2a' }}>
+                      Turn {wm.turn} · <span style={{ textTransform: 'uppercase' }}>{wm.issue_type?.replace(/_/g, ' ')}</span>
+                    </div>
+                    <div style={{ color: '#495057', margin: '2px 0' }}>"{wm.text?.slice(0, 100)}{wm.text?.length > 100 ? '…' : ''}"</div>
+                    <div style={{ color: '#868e96' }}>{wm.reason}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+        </div>
+      </td>
+    </tr>
+  )
+}
+
 function DetectiveResults({ data }) {
+  const [expanded, setExpanded] = useState(null)
   if (!data) return null
   const results = data.results || []
   const evaluation = data.evaluation
@@ -144,7 +234,9 @@ function DetectiveResults({ data }) {
       )}
 
       <div className="card border-0 shadow-sm">
-        <div className="card-header bg-white py-3 fw-semibold">Scored Calls</div>
+        <div className="card-header bg-white py-3 fw-semibold">
+          Scored Calls <span className="text-muted fw-normal small ms-2">— click any row to see full breakdown</span>
+        </div>
         <div className="table-responsive">
           <table className="table calls-table mb-0">
             <thead className="table-light">
@@ -159,14 +251,21 @@ function DetectiveResults({ data }) {
             </thead>
             <tbody>
               {[...results].sort((a, b) => (b.score || 0) - (a.score || 0)).map((r) => (
-                <tr key={r.call_id}>
-                  <td className="call-id-cell">{r.call_id}</td>
-                  <td>{r.customer_name}</td>
-                  <td><span className="badge bg-secondary">{r.disposition}</span></td>
-                  <td><ScoreBar score={r.score} /></td>
-                  <td className="text-muted small">{r.rule_score} / {r.llm_score}</td>
-                  <td><VerdictBadge verdict={r.verdict} /></td>
-                </tr>
+                <>
+                  <tr
+                    key={r.call_id}
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => setExpanded(expanded === r.call_id ? null : r.call_id)}
+                  >
+                    <td className="call-id-cell">{r.call_id} {expanded === r.call_id ? '▲' : '▼'}</td>
+                    <td>{r.customer_name}</td>
+                    <td><span className="badge bg-secondary">{r.disposition}</span></td>
+                    <td><ScoreBar score={r.score} /></td>
+                    <td className="text-muted small">{r.rule_score} / {r.llm_score}</td>
+                    <td><VerdictBadge verdict={r.verdict} /></td>
+                  </tr>
+                  {expanded === r.call_id && <ScoreBreakdownDetail key={r.call_id + '_detail'} r={r} />}
+                </>
               ))}
             </tbody>
           </table>
@@ -177,6 +276,7 @@ function DetectiveResults({ data }) {
 }
 
 function SurgeonResults({ data }) {
+  const [surgeonExpanded, setSurgeonExpanded] = useState(null)
   if (!data) return null
   const aggregate = data.aggregate || {}
   const comparison = data.comparison
@@ -208,7 +308,9 @@ function SurgeonResults({ data }) {
       )}
 
       <div className="card border-0 shadow-sm">
-        <div className="card-header bg-white py-3 fw-semibold">Simulation Results</div>
+        <div className="card-header bg-white py-3 fw-semibold">
+          Simulation Results <span className="text-muted fw-normal small ms-2">— click any row to see full breakdown</span>
+        </div>
         <div className="table-responsive">
           <table className="table calls-table mb-0">
             <thead className="table-light">
@@ -223,14 +325,21 @@ function SurgeonResults({ data }) {
             </thead>
             <tbody>
               {[...results].sort((a, b) => (b.score || 0) - (a.score || 0)).map((r) => (
-                <tr key={r.call_id}>
-                  <td className="call-id-cell">{r.call_id}</td>
-                  <td>{r.customer_name || '-'}</td>
-                  <td><span className="badge bg-secondary">{r.disposition || 'UNKNOWN'}</span></td>
-                  <td><ScoreBar score={r.score} /></td>
-                  <td className="text-muted small">{r.rule_score || 0} / {r.llm_score || 0}</td>
-                  <td><VerdictBadge verdict={r.verdict || 'bad'} /></td>
-                </tr>
+                <>
+                  <tr
+                    key={r.call_id}
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => setSurgeonExpanded(surgeonExpanded === r.call_id ? null : r.call_id)}
+                  >
+                    <td className="call-id-cell">{r.call_id} {surgeonExpanded === r.call_id ? '▲' : '▼'}</td>
+                    <td>{r.customer_name || '-'}</td>
+                    <td><span className="badge bg-secondary">{r.disposition || 'UNKNOWN'}</span></td>
+                    <td><ScoreBar score={r.score} /></td>
+                    <td className="text-muted small">{r.rule_score || 0} / {r.llm_score || 0}</td>
+                    <td><VerdictBadge verdict={r.verdict || 'bad'} /></td>
+                  </tr>
+                  {surgeonExpanded === r.call_id && <ScoreBreakdownDetail key={r.call_id + '_detail'} r={r} />}
+                </>
               ))}
             </tbody>
           </table>
@@ -241,6 +350,7 @@ function SurgeonResults({ data }) {
 }
 
 function PipelineResults({ data }) {
+  const [pipelineExpanded, setPipelineExpanded] = useState(null)
   if (!data) return null
   const aggregate = data.aggregate || {}
   const results = data.results || []
@@ -288,7 +398,9 @@ function PipelineResults({ data }) {
       </div>
 
       <div className="card border-0 shadow-sm mb-4">
-        <div className="card-header bg-white py-3 fw-semibold">Pipeline Results</div>
+        <div className="card-header bg-white py-3 fw-semibold">
+          Pipeline Results <span className="text-muted fw-normal small ms-2">— click any row to see full breakdown</span>
+        </div>
         <div className="table-responsive">
           <table className="table calls-table mb-0">
             <thead className="table-light">
@@ -304,15 +416,22 @@ function PipelineResults({ data }) {
             </thead>
             <tbody>
               {[...results].sort((a, b) => (b.score || 0) - (a.score || 0)).map((r) => (
-                <tr key={r.call_id}>
-                  <td className="call-id-cell">{r.call_id}</td>
-                  <td>{r.customer_name || '-'}</td>
-                  <td><span className="badge bg-secondary">{r.disposition || 'UNKNOWN'}</span></td>
-                  <td><span className="badge bg-light text-dark border">{r.original_disposition || '-'}</span></td>
-                  <td><ScoreBar score={r.score} /></td>
-                  <td className="text-muted small">{r.rule_score || 0} / {r.llm_score || 0}</td>
-                  <td><VerdictBadge verdict={r.verdict || 'bad'} /></td>
-                </tr>
+                <>
+                  <tr
+                    key={r.call_id}
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => setPipelineExpanded(pipelineExpanded === r.call_id ? null : r.call_id)}
+                  >
+                    <td className="call-id-cell">{r.call_id} {pipelineExpanded === r.call_id ? '▲' : '▼'}</td>
+                    <td>{r.customer_name || '-'}</td>
+                    <td><span className="badge bg-secondary">{r.disposition || 'UNKNOWN'}</span></td>
+                    <td><span className="badge bg-light text-dark border">{r.original_disposition || '-'}</span></td>
+                    <td><ScoreBar score={r.score} /></td>
+                    <td className="text-muted small">{r.rule_score || 0} / {r.llm_score || 0}</td>
+                    <td><VerdictBadge verdict={r.verdict || 'bad'} /></td>
+                  </tr>
+                  {pipelineExpanded === r.call_id && <ScoreBreakdownDetail key={r.call_id + '_detail'} r={r} />}
+                </>
               ))}
             </tbody>
           </table>
